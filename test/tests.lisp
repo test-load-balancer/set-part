@@ -2,7 +2,7 @@
 
 (in-suite :iisc.set-part)
 
-(def-suite test-suite :description "hello world suite")
+(def-suite test-suite :description "set partitioning tests")
 
 (test foo
   (is (= 12 (foo 2))))

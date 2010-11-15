@@ -11,13 +11,15 @@
   :properties ((:test-suite-name . :iisc.set-part.test))
   :components ((:static-file "set-part.asd")
                (:module :src
-                        :components ((:file "part" :depends-on ("package"))
-                                     (:file "package")))
+                        :components ((:file "package")
+                                     (:file "classes" :depends-on ("package"))
+                                     (:file "part" :depends-on ("classes"))))
                (:module :test
                         :components ((:file "suite")
-                                     (:file "tests" :depends-on ("suite")))
+                                     (:file "part" :depends-on ("suite"))
+                                     (:file "classes" :depends-on ("suite")))
                         :depends-on (:src)))
-  :depends-on (:fiveam))
+  :depends-on (:fiveam :mw-equiv))
 
 (defmethod asdf:perform ((op asdf:test-op) (system (eql (find-system :set-part))))
   (funcall (intern (string :run!) (string :iisc.set-part)) :iisc.set-part))
