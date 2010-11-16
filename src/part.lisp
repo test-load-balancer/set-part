@@ -26,7 +26,7 @@
     (if parent-b
         (let* ((chromosome-a (elements parent-a))
                (chromosome-b (elements parent-b))
-               (crossover-range (funcall chromosome-selector (length chromosome-a) (length chromosome-b)))
+               (crossover-range (funcall chromosome-selector parents ideal-bag-weight))
                (crossover-range-a (car crossover-range))
                (crossover-range-b (cdr crossover-range))
                (start-offset-a (car crossover-range-a))

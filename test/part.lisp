@@ -73,13 +73,13 @@
                            (make-bag-of 13 2 3 10 19))
                      (cross-over (cons (make-bag-of 1 2 3 4 5 7)
                                        (make-bag-of 13 20 25 10 19))
-                                 :chromosome-selector (lambda (length-bag-a length-bag-b) '((1 . 3) . (1 . 3)))
+                                 :chromosome-selector (lambda (_ __) '((1 . 3) . (1 . 3)))
                                  :ideal-bag-weight 35))))
 
 (test should-copy-the-parent-over-when-single
   (is (equiv:object= (cons (make-bag-of 1 20 25 4 5 7) nil)
                      (cross-over (cons (make-bag-of 1 20 25 4 5 7) nil)
-                                 :chromosome-selector (lambda (length-bag-a length-bag-b) '((1 . 3) . (1 . 3)))
+                                 :chromosome-selector (lambda (_ __) '((1 . 3) . (1 . 3)))
                                  :ideal-bag-weight 35))))
 
 (test should-not-cross-over-when-sd-increases
@@ -87,7 +87,7 @@
                            (make-bag-of 13 1 2 10 19))
                      (cross-over (cons (make-bag-of 1 10 12 4 5 7)
                                        (make-bag-of 13 1 2 10 19))
-                                 :chromosome-selector (lambda (length-bag-a length-bag-b) '((1 . 3) . (1 . 3)))
+                                 :chromosome-selector (lambda (_ __) '((1 . 3) . (1 . 3)))
                                  :ideal-bag-weight 35))))
 
 (test should-cross-over-entire-generation
@@ -105,4 +105,4 @@
                                             (make-bag-of 1 20 15 2 3) ;;41
                                             (make-bag-of 1 2 21 10 18) ;; 51
                                             (make-bag-of 3 1 3 3 6 5 10 16)) ;;47
-                                      :chromosome-selector (lambda (len-bag-a len-bag-b) '((1 . 3) . (0 . 2)))))))
+                                      :chromosome-selector (lambda (_ __) '((1 . 3) . (0 . 2)))))))
