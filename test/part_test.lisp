@@ -76,6 +76,15 @@
                                  :chromosome-selector (lambda (_ __) '((1 . 3) . (1 . 3)))
                                  :ideal-bag-weight 35))))
 
+(test should-cross-over-with-different-strand-lengths
+  (is (equiv:object= (cons (make-bag-of 1 25 10 19)
+                           (make-bag-of 13 20 2))
+                     (cross-over (cons (make-bag-of 1 2)
+                                       (make-bag-of 13 20 25 10 19))
+                                 :chromosome-selector (lambda (_ __) '((1 . 2) . (2 . 5)))
+                                 :ideal-bag-weight 35))))
+
+
 (test should-copy-the-parent-over-when-single
   (is (equiv:object= (cons (make-bag-of 1 20 25 4 5 7) nil)
                      (cross-over (cons (make-bag-of 1 20 25 4 5 7) nil)
@@ -112,7 +121,7 @@
          (length-of-a (length (elements bag-a)))
          (bag-b (make-bag-of 10 20 30 40))
          (length-of-b (length (elements bag-b)))
-         (range (random-chromosome-selector (cons bag-a bag-b) 18))
+         (range (funcall (create-random-chromosome-selector 100) (cons bag-a bag-b) 18))
          (range-for-a (car range))
          (range-for-b (cdr range))
          (a-start (car range-for-a))
@@ -127,3 +136,19 @@
     (is (< b-start length-of-b))
     (is (< b-start b-end))
     (is (<= b-end length-of-b))))
+
+(test should-compute-chromosome-selection-range-bounded-by-max-fraction
+  (let* ((bag-a (make-bag-of 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21))
+         (length-of-a (length (elements bag-a)))
+         (bag-b (make-bag-of 10 20 30 40 50 60 70 80 90 100 110))
+         (length-of-b (length (elements bag-b)))
+         (range (funcall (create-random-chromosome-selector .1) (cons bag-a bag-b) 18))
+         (range-for-a (car range))
+         (range-for-b (cdr range))
+         (a-start (car range-for-a))
+         (a-end (cdr range-for-a))
+         (b-start (car range-for-b))
+         (b-end (cdr range-for-b)))
+    (is (<= (- a-end a-start) 3))
+    (is (<= (- b-end b-start) 2))))
+
