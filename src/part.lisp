@@ -79,3 +79,8 @@
       (let ((parent-a (car parents))
             (parent-b (cdr parents)))
         (cons (choose-range parent-a) (choose-range parent-b))))))
+
+(defun improve-partitions (generation times)
+  (do ((new-generation generation (next-generation new-generation :chromosome-selector (create-random-chromosome-selector .05)))
+       (generation-number 0 (+ 1 generation-number)))
+      ((> generation-number times) new-generation)))
