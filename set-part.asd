@@ -20,7 +20,8 @@
                         :components ((:file "suite")
                                      (:file "part_test" :depends-on ("suite"))
                                      (:file "classes_test" :depends-on ("suite"))
-                                     (:file "util_test" :depends-on ("suite")))
+                                     (:file "util_test" :depends-on ("suite"))
+                                     (:file "spiking"))
                         :depends-on (:src)))
   :depends-on (:fiveam :mw-equiv))
 
