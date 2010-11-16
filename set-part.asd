@@ -17,8 +17,8 @@
                                      (:file "util" :depends-on ("package"))))
                (:module :test
                         :components ((:file "suite")
-                                     (:file "part" :depends-on ("suite"))
-                                     (:file "classes" :depends-on ("suite"))
+                                     (:file "part_test" :depends-on ("suite"))
+                                     (:file "classes_test" :depends-on ("suite"))
                                      (:file "util_test" :depends-on ("suite")))
                         :depends-on (:src)))
   :depends-on (:fiveam :mw-equiv))
