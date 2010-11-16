@@ -25,4 +25,8 @@
   (list #'elements
         #'weight))
 
+(defmethod print-object ((bag bag) stream)
+  (format stream "#<bag elements: ~a weight: ~a>" (elements bag) (weight bag)))
 
+(defmethod print-object ((element element) stream)
+  (format stream "#<element weight: ~a>" (weight element)))

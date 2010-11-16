@@ -13,11 +13,13 @@
                (:module :src
                         :components ((:file "package")
                                      (:file "classes" :depends-on ("package"))
-                                     (:file "part" :depends-on ("classes"))))
+                                     (:file "part" :depends-on ("classes" "util"))
+                                     (:file "util" :depends-on ("package"))))
                (:module :test
                         :components ((:file "suite")
                                      (:file "part" :depends-on ("suite"))
-                                     (:file "classes" :depends-on ("suite")))
+                                     (:file "classes" :depends-on ("suite"))
+                                     (:file "util_test" :depends-on ("suite")))
                         :depends-on (:src)))
   :depends-on (:fiveam :mw-equiv))
 
