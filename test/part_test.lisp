@@ -106,3 +106,24 @@
                                             (make-bag-of 1 2 21 10 18) ;; 51
                                             (make-bag-of 3 1 3 3 6 5 10 16)) ;;47
                                       :chromosome-selector (lambda (_ __) '((1 . 3) . (0 . 2)))))))
+
+(test should-compute-chromosome-selection-range-for-cross-over
+  (let* ((bag-a (make-bag-of 1 2 3 4 5 6 7))
+         (length-of-a (length (elements bag-a)))
+         (bag-b (make-bag-of 10 20 30 40))
+         (length-of-b (length (elements bag-b)))
+         (range (random-chromosome-selector (cons bag-a bag-b) 18))
+         (range-for-a (car range))
+         (range-for-b (cdr range))
+         (a-start (car range-for-a))
+         (a-end (cdr range-for-a))
+         (b-start (car range-for-b))
+         (b-end (cdr range-for-b)))
+    (is (<= 0 a-start))
+    (is (< a-start length-of-a))
+    (is (< a-start a-end))
+    (is (<= a-end length-of-a))
+    (is (<= 0 b-start))
+    (is (< b-start length-of-b))
+    (is (< b-start b-end))
+    (is (<= b-end length-of-b))))

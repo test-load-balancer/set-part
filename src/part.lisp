@@ -66,3 +66,14 @@
                 (append list children)))
             offsprings
             :initial-value nil)))
+
+(defun random-chromosome-selector (parents ideal-weight)
+  (let* ((parent-a (car parents))
+         (parent-b (cdr parents))
+         (length-of-a (length (elements parent-a)))
+         (length-of-b (length (elements parent-b)))
+         (offset-a (random length-of-a))
+         (limit-a (+ 1 (random (- length-of-a offset-a))))
+         (offset-b (random length-of-b))
+         (limit-b (+ 1 (random (- length-of-b offset-b)))))
+    (cons (cons offset-a (+ offset-a limit-a)) (cons offset-b (+ offset-b limit-b)))))
