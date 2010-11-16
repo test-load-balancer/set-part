@@ -7,7 +7,8 @@
 (in-package :iisc.set-part.system)
 
 (defsystem :set-part
-  :author "Janmejay Singh <singh.janmejay@gmail.com>"
+  :author '("Janmejay Singh <singh.janmejay@gmail.com>"
+            "Pavan KS <itspanzi@gmail.com>")
   :properties ((:test-suite-name . :iisc.set-part.test))
   :components ((:static-file "set-part.asd")
                (:module :src
