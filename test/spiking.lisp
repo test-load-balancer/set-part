@@ -5,8 +5,8 @@
     lst))
 
 (defun bag-of-size (size-limit)
-  (let ((elements (times (lambda (idx) (make-instance 'p::element :weight (random 100))) size-limit)))
-    (p::make-bag elements)))
+  (let ((elements (times (lambda (idx) (make-instance 'prt::element :weight (random 100))) size-limit)))
+    (prt::make-bag elements)))
 
 (defun make-sets (names)
   (dolist (set-name names)
@@ -16,10 +16,10 @@
 
 (defun do-generations (generations &optional (verbose nil))
   (let* ((new-gen (p:improve-partitions (list a b c d e f) generations))
-        (new-gen-weights (map 'cons #'p::weight new-gen)))
+        (new-gen-weights (map 'cons #'prt::weight new-gen)))
     (when verbose
       (print new-gen))
     (print new-gen-weights)))
 
 (defun show-orig ()
-  (print (map 'cons #'p::weight (list a b c d e f))))
+  (print (map 'cons #'prt::weight (list a b c d e f))))

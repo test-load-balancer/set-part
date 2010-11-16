@@ -1,9 +1,9 @@
-(defpackage :iisc.set-part
+(defpackage :tlb.set-part
   (:use :common-lisp :it.bese.FiveAM)
-  (:nicknames :p)
+  (:nicknames :prt)
   (:export #:improve-partitions))
 
-(defpackage :iisc.set-part.util
+(defpackage :tlb.set-part.util
   (:use :common-lisp)
-  (:nicknames :util)
+  (:nicknames :prt-util)
   (:export #:sd))

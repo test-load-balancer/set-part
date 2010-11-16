@@ -1,15 +1,15 @@
 ;; -*- lisp -*-
 
-(defpackage :iisc.set-part.system
+(defpackage :tlb.set-part.system
   (:use :common-lisp
         :asdf))
 
-(in-package :iisc.set-part.system)
+(in-package :tlb.set-part.system)
 
 (defsystem :set-part
   :author '("Janmejay Singh <singh.janmejay@gmail.com>"
             "Pavan KS <itspanzi@gmail.com>")
-  :properties ((:test-suite-name . :iisc.set-part.test))
+  :properties ((:test-suite-name . :tlb.set-part.test))
   :components ((:static-file "set-part.asd")
                (:module :src
                         :components ((:file "package")
@@ -25,5 +25,5 @@
   :depends-on (:fiveam :mw-equiv))
 
 (defmethod asdf:perform ((op asdf:test-op) (system (eql (find-system :set-part))))
-  (funcall (intern (string :run!) (string :iisc.set-part)) :iisc.set-part))
+  (funcall (intern (string :run!) (string :tlb.set-part)) :tlb.set-part))
 

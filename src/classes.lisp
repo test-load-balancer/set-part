@@ -1,4 +1,4 @@
-(in-package :iisc.set-part)
+(in-package :tlb.set-part)
 
 (defmethod equiv:object-frozenp ((obj cons)) t)
 

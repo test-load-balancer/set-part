@@ -1,4 +1,4 @@
-(in-package :iisc.set-part.util)
+(in-package :tlb.set-part.util)
 
 (defun sd (numbers ideal-value)
   (let ((sum-squares (reduce (lambda (sum number)

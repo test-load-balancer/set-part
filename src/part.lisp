@@ -1,4 +1,4 @@
-(in-package :iisc.set-part)
+(in-package :tlb.set-part)
 
 (defun sort-bags (bags comparison)
   (sort bags (lambda (me her) (funcall comparison (weight me) (weight her)))))
@@ -43,8 +43,8 @@
                (child-chromosome-b (append before-crossover-b crossover-frag-a after-crossover-b))
                (child-a (make-bag child-chromosome-a))
                (child-b (make-bag child-chromosome-b))
-               (parent-sd (util:sd (list (weight parent-a) (weight parent-b)) ideal-bag-weight))
-               (child-sd (util:sd (list (weight child-a) (weight child-b)) ideal-bag-weight)))
+               (parent-sd (prt-util:sd (list (weight parent-a) (weight parent-b)) ideal-bag-weight))
+               (child-sd (prt-util:sd (list (weight child-a) (weight child-b)) ideal-bag-weight)))
           (if (> parent-sd child-sd) (cons child-a child-b) parents))
         parents)))
 

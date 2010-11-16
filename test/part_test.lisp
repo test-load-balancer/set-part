@@ -1,6 +1,6 @@
-(in-package :iisc.set-part)
+(in-package :tlb.set-part)
 
-(in-suite :iisc.set-part)
+(in-suite :tlb.set-part)
 
 (def-suite test-suite :description "partition logic test")
 
